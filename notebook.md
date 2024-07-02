@@ -172,6 +172,12 @@ Dado el poder de este comando, hay que tener en cuenta que puede haber pérdida 
 
 **IMPORTANTE**: el comando también actúa hacia delante, ya que permite volver al final de los commits que se habían borrado localmente y recuperar todo hasta el `HEAD` más avanzado.
 
+## git revert
+
+[Esta orden](https://chatgpt.com/share/ad683fd0-1efd-4fc7-800e-a1d2e7124935) se emplea para crear un nuevo commit que deshace los cambios introducidos por un commit anterior.
+
+A diferencia de `git reset`, que puede modificar la historia del commit, `git revert` es una operación segura para repositorios compartidos porque no altera la historia existente.
+
 ## git reflog
 
 Es [un comando](https://chatgpt.com/share/861f2900-e9e1-4db5-9475-792c3760a7a6) poderoso que muestra un registro de todas la referencias (commits) al que el repositorio local apunta. Esto incluye, no sólo commits, sino otros cambios como actualización de ramas y resets y similares. Básicamente, permite ver la historia del `HEAD` y otras referencias.
@@ -188,6 +194,48 @@ a72e98b HEAD@{2}: commit: Update README
 4f6a1e0 (feature-branch) HEAD@{4}: commit: Start feature-branch
 e3cbf6f HEAD@{5}: checkout: moving from main to e3cbf6f
 ```
+
+## git tag
+
+[Esta instrucción](https://chatgpt.com/share/94f79314-8e7d-4bf8-9d2e-625a2dffe858) se utiliza para crear, listar, borrar o verificar **etiquetas (tags)** en el repositorio. 
+
+Las etiquetas son referencias que marcan puntos específicos en la historia dle repositorio, usualmente para destacar puntos de *releases* (v1.0, v2.0, por ejemplo).
+
+## Diferencias entre `git add .`, `git add -u` y `git add -A`
+
+- `git add .`: Stages new and modified files in the current directory and its subdirectories but does not stage deletions.
+- `git add -u`: Stages modifications and deletions but does not stage new files.
+- `git add -A`: Stages all changes (new files, modifications, and deletions) in the working directory.
+
+## git branch, git switch
+
+La [gestión de ramas](https://chatgpt.com/share/71b054b1-654c-4b7d-bfac-e98b83d86d73) es una característica fundamental de Git. 
+
+**Comandos básicos**
+
+- Crear una nueva rama:
+```bash
+git branch <branch_name>
+```
+- Listar todas las ramas del repositorio:
+```bash
+git branch
+```
+- Cambiar a una rama
+```bash
+git switch <branch_name>
+```
+- Crear una nueva rama y cambiarse a ella
+```bash
+git switch -c <branch_name>
+```
+- Renombrar la rama actual
+```bash
+git branch -m <new_branch_name>
+```
+
+Borrar una rama tiene algunas especificidades. Revisar la información que aporta el link de esta sección al respecto. 
+
 
 
 
