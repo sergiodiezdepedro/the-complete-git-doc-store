@@ -46,6 +46,10 @@ git init
 git config --global init.defaultBranch main
 ```
 
+## git log
+
+[Este comando](https://chatgpt.com/share/4f0c105b-eeed-455c-b6d8-55e6809a5c9b) muestra la historia de commits del repositorio.
+
 ## git checkout
 
 `git checkout` is a versatile command used in Git to switch between different branches or to restore working tree files. Here's a detailed explanation of its uses:
@@ -148,4 +152,7 @@ Ejemplo:
 git config --global alias.lg "log --graph --decorate --all --oneline"
 ```
 
+## git diff
+
+[Este comando](https://chatgpt.com/share/4f219943-a59c-461d-9e2a-f9158df6ce55) muestra las diferencias entre varios commits, ramas, archivos, o el directorio de trabajo y el index (área de stage).
 
