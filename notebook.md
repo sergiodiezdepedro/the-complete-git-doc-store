@@ -156,3 +156,39 @@ git config --global alias.lg "log --graph --decorate --all --oneline"
 
 [Este comando](https://chatgpt.com/share/4f219943-a59c-461d-9e2a-f9158df6ce55) muestra las diferencias entre varios commits, ramas, archivos, o el directorio de trabajo y el index (área de stage).
 
+## git reset --hard
+
+[El comando](https://chatgpt.com/share/78bcd537-b939-47aa-9a99-d5559de28ba2) se utiliza para resetear la rama actual a un estado específico, descartando todos los cambios locales y commits.
+
+```bash
+git reset --hard <commit>
+```
+
+- `<commit>`. Puede ser el hash de un commit, el nombre de una rama, una etiqueta o cualquier otra referencia a un commit específico de la historia.
+
+- `--hard`: Esta opción significa que el directorio de trabajo y el index serán borrados para ajustarse a un commit especificado. Todos los cambios de los archivos con seguimiento del directorio de trabajo serán descartados.
+
+Dado el poder de este comando, hay que tener en cuenta que puede haber pérdida de datos en local, es irreversible y puede tener impactos en los colaboradores de un repositorio compartido.
+
+**IMPORTANTE**: el comando también actúa hacia delante, ya que permite volver al final de los commits que se habían borrado localmente y recuperar todo hasta el `HEAD` más avanzado.
+
+## git reflog
+
+Es [un comando](https://chatgpt.com/share/861f2900-e9e1-4db5-9475-792c3760a7a6) poderoso que muestra un registro de todas la referencias (commits) al que el repositorio local apunta. Esto incluye, no sólo commits, sino otros cambios como actualización de ramas y resets y similares. Básicamente, permite ver la historia del `HEAD` y otras referencias.
+
+Asimismo, habilita la posibilidad de recuperar commits perdidos y deshacer cambios.
+
+Ejemplo de output:
+
+```bash
+b0a21f3 (HEAD -> main) HEAD@{0}: commit: Add new feature
+7c829d5 HEAD@{1}: commit: Fix bug in feature
+a72e98b HEAD@{2}: commit: Update README
+2c7a6f1 HEAD@{3}: checkout: moving from main to feature-branch
+4f6a1e0 (feature-branch) HEAD@{4}: commit: Start feature-branch
+e3cbf6f HEAD@{5}: checkout: moving from main to e3cbf6f
+```
+
+
+
+
