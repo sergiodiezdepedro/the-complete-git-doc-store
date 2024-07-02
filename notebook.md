@@ -50,7 +50,7 @@ git config --global init.defaultBranch main
 
 `git checkout` is a versatile command used in Git to switch between different branches or to restore working tree files. Here's a detailed explanation of its uses:
 
-### Switching Branches
+**Switching Branches**
 To switch to an existing branch:
 
 ```bash
@@ -63,7 +63,7 @@ For example, if you want to switch to a branch called feature-branch:
 git checkout feature-branch
 ```
 
-### Creating and Switching to a New Branch
+**Creating and Switching to a New Branch**
 
 You can create a new branch and switch to it in one command:
 
@@ -76,7 +76,8 @@ For example, to create and switch to a branch called new-feature:
 ```bash
 git checkout -b new-feature
 ```
-### Restoring Files
+
+**Restoring Files**
 
 You can use git checkout to restore a specific file to its state in another branch or commit:
 
@@ -89,7 +90,7 @@ For example, to restore a file called `example.txt` from the main branch:
 git checkout main -- example.txt
 ```
 
-### Checking Out a Specific Commit
+**Checking Out a Specific Commit**
 
 You can also check out a specific commit by its hash:
 
@@ -134,4 +135,17 @@ Restoring a file from another branch with git restore:
 git restore --source branch_name -- path/to/file
 ```
 Using these newer commands can make the intent of your Git operations clearer.
+
+## git alias
+
+```bash
+git config --global alias.lorem "comandos git"
+```
+
+Ejemplo:
+
+```bash
+git config --global alias.lg "log --graph --decorate --all --oneline"
+```
+
 
