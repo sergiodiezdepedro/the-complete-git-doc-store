@@ -46,6 +46,65 @@ git init
 git config --global init.defaultBranch main
 ```
 
+## .gitignore global
+
+Creating a global `.gitignore` file can be useful to exclude certain files and directories across all your Git repositories. This is particularly handy for ignoring system-specific files or IDE configurations that you don't want to include in any repository.
+
+Here are the steps to set up a global `.gitignore` file:
+
+1. **Create the Global .gitignore File**: choose a location for your global .gitignore file. For example, you might place it in your home directory:
+
+```bash
+touch ~/.gitignore_global
+```
+2. **Add Patterns to the Global .gitignore File**: edit the `~/.gitignore_global` file and add the patterns you want to ignore globally. For example:
+
+```bash
+# OS generated files #
+######################
+.DS_Store
+Thumbs.db
+
+# IDEs and editors #
+######################
+.idea/
+*.swp
+*.swo
+.vscode/
+
+# Compiled source #
+##################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+```
+
+3. **Configure Git to Use the Global `.gitignore` File**: tell Git to use this file as the global `.gitignore`:
+
+```bash
+git config --global core.excludesfile ~/.gitignore_global
+```
+
+4. **Verify the Configuration**: you can verify that Git is using your global `.gitignore` file by running:
+
+```bash
+git config --get core.excludesfile
+```
+
+This should output the path to your global .gitignore file, e.g., `/home/username/.gitignore_global`.
+
+By following these steps, you will have a global `.gitignore` file that is used across all your Git repositories, making it easier to manage common exclusions and keep your repositories clean.
+
+
 ## git log
 
 [Este comando](https://chatgpt.com/share/4f0c105b-eeed-455c-b6d8-55e6809a5c9b) muestra la historia de commits del repositorio.
@@ -234,7 +293,7 @@ git switch -c <branch_name>
 git branch -m <new_branch_name>
 ```
 
-Borrar una rama tiene algunas especificidades. Revisar la información que aporta el link de esta sección al respecto. 
+Borrar una rama tiene algunas especificidades. Revisar la información que aporta el link de esta sección al respecto. En [este enlace](https://chatgpt.com/share/ea56d8f4-a1bf-480f-9692-cbf292e0a472) se explica cómo borrar una rama remota del repositorio.
 
 ## git merge
 
@@ -256,10 +315,16 @@ Un stash que incluye también los archivos *untracked*:
 git stash -u
 ```
 
-Aplicar un stash específico:
+Aplicar un stash específico, pero no lo borra de la lista de stash:
 
 ```bash
 git stash apply stash@{n}
+```
+
+Aplicar un stash específico, y borrarlo de la lista de stash:
+
+```bash
+git stash pop stash@{n}
 ```
 
 donde **n** es el índice del stash de la lista de estos.
