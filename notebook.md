@@ -236,7 +236,31 @@ git branch -m <new_branch_name>
 
 Borrar una rama tiene algunas especificidades. Revisar la información que aporta el link de esta sección al respecto. 
 
+## git merge
 
+[Cómo hacer](https://chatgpt.com/share/a0de9e38-0b5a-4828-aec9-c1fa67e8b1c9) un `merge` sin morir en el intento.
 
+## git stash
 
+[Este comando](https://chatgpt.com/share/58c1164a-40ed-481f-8419-114d5e42176c) permite guardar (o *dejar aparcados*) cambios realizados en el directorio de trabajo actual sin hacer commit de ellos y poder cambiarse a otra rama, o trabajar en otra cosa.
+
+Es aconsejable hacerlo con un nombre para poder identificarlo:
+
+```bash
+git stash save "lorem ipsum"
+```
+
+Un stash que incluye también los archivos *untracked*:
+
+```bash
+git stash -u
+```
+
+Aplicar un stash específico:
+
+```bash
+git stash apply stash@{n}
+```
+
+donde **n** es el índice del stash de la lista de estos.
 
