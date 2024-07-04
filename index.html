@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Git - Tutorial</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="item">
+            <div class="comando">
+                <p>git init</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Prepara todas las herramientas que necesita Git para empezar a hacer el seguimiento de los cambios
+                    realizados en el proyecto.
+                </p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>
+                Un proyecto Git puede ser concebido como si tuviera tres espacios:
+            </p>
+            <ul>
+                <li>
+                    A Working Directory (<span class="destacado">Directorio de Trabajo</span>): where you'll be doing
+                    all the work: creating, editing, deleting and organizing files.
+                </li>
+                <li>
+                    A Staging Area (<span class="destacado">el Index</span>): where you'll list changes you make to the
+                    working directory.
+                </li>
+                <li>A Repository (<span class="destacado">el Head</span>): where Git permanently stores those changes as
+                    different versions of the project.
+                </li>
+            </ul>
+            <p>
+                The Git workflow consists of editing files in the working directory, adding files to the staging area,
+                and saving changes to a Git repository. In Git, we save changes with a commit.
+            </p>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git status</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    A medida de que se va trabajando en el proyecto, se cambian los contenidos en el Directorio de
+                    Trabajo. Se puede comprobar la situación de estos cambios con este comando. En la respuesta de
+                    salida, los 'untracked files' son aquellos archivos que Git ve pero que no ha comenzado a seguir
+                    todavía. Asimismo se informa de la rama en la que se está y el último commit.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git add nombrearchivo</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Con este comando se añade un archivo del Directorio de trabajo al Index, habitualmente tras haber
+                    realizado cambios.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git diff nombrearchivo</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Se comprueban las diferencias que existen en el archivo entre el directorio de trabajo y el Index.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git commit</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Es el último paso en el flujo de trabajo de Git. <strong>Commit</strong> almacena permanentemente
+                    los cambios desde el Index al repositorio, el Head. La sintaxis habitual es:
+                </p>
+            </div>
+            <div class="comando">
+                <p>git commit -m "Mensaje"
+                </p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    El mensaje va entre comillas y no debe tener más de 50 caracteres.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git log</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Con Git a menudo necesitarás remitirte a una versión anterior del proyecto. Los commits se guardan
+                    cronológicamente en el repositorio y pueden ser vistos con este comando. En la salida se indica:
+                </p>
+                <ul>
+                    <li>
+                        A 40-character code, called a
+                        <span class="destacado">SHA</span>, that uniquely identifies the commit. This appears in orange
+                        text.
+                    </li>
+                    <li>
+                        The commit author.
+                    </li>
+                    <li>
+                        The date and time of the commit.
+                    </li>
+                    <li>
+                        The commit message (el añadido con '-m')
+                    </li>
+                </ul>
+                <p>
+                    El SHA del commit vigente es conocido como el
+                    <span class="destacado">HEAD commit</span>. En muchos casos, el commit más reciente es el HEAD
+                    commit.
+                </p>
+                <p><span class="destacado">git log --summary</span> aporta más información, como, por ejemplo cuándo se
+                    ha añadido tal o cual archivo, o cuándo se ha borrado.</p>
+                <p><span class="destacado">git log --oneline</span> muestra, en una línea, los primeros caracteres del
+                    SHA y el mensaje de cada commit.</p>
+                <p><span class="destacado">git log --oneline --decorate</span> aporta información, de forma más gráfica,
+                    sobre el punto actual en el que está el proyecto destacando algunas cuestiones sobre el commit
+                    actual.</p>
+                <p><span class="destacado">git log --oneline --decorate --all</span> muestra el estado de todas las
+                    ramas actuales del proyecto, incluidos todos los commits, si existiesen, en dichas ramas.</p>
+                <p><span class="destacado">git log --oneline --decorate --all --graph</span> suma a la información
+                    anterior una sencilla representación gráfica de los commits de las distintas ramas.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git commit --amend</p>
+            </div>
+            <div class="explica-comando">
+                <p>Este comando permite introducir una modificación en <strong>el último commit</strong>, por lo que nos
+                    ahorramos hacer un commit nuevo.</p>
+                <p>Después de haber pasado los cambios al Stage, se invoca este comando y los cambios se introducen en
+                    el anterior commit que, como efecto colateral cambia su SHA.</p>
+                <p>Esta función sólo es realmente útil cuando se actúa a nivel local, es decir, que si el commit ya se
+                    ha enviado al repositorio remoto, invocarla causa problemas.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git show HEAD</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Muestra el HEAD commit. La salida de este comando muestra todo el git log del HEAD commit, más todos
+                    los cambios en el archivo que fueron añadidos con el commit.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git checkout HEAD nombrearchivo</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Restaurará el archivo del directorio de trabajo al mismo estado anterior del último commit
+                    realizado.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git add nombrearchivo1 nombrearchivo2 ... nombrearchivo'n'</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Así se añaden varios archivos al Index.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git add -A .</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Todo lo que esté en y por debajo del directorio actual ('.' indica el directorio actual) se añade al
+                    Staging Area. La
+                    <span class="destacado">-A</span>asegura que incluso los archivos borrados son incluidos.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git add '*.extension'</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Añade al Staging Area todos los archivos de todos los directorios del proyecto con esa extensión.
+                    Las comillas son obligatorias, ya que sin ellas sólo se añadirían los archivos del directorio
+                    actual.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>
+                    git reset nombrearchivo
+                </p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Retira un archivo del Stagging Area.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git reset HEAD nombrearchivo</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Este comando resetea el archivo en el Área de Index al mismo estado del HEAD commit. Esto no
+                    descarta los cambios en el archivo realizados en Área de Trabajo, sino que lo quita del Área Index.
+                    Es decir, que si un archivo ha tenido cambios y lo hemos pasado al Index con un add, y nos hemos
+                    equivocado y queremos rectificar, podemos quitarlo del Index antes de hacer el commit.
+                </p>
+                <p>Para retirarlo de la situación de cambio producido, se recurre a <span class="destacado">git checkout
+                        -- nombrearchivo</span>. Es decir, que este comando devuelve el archivo al estado original que
+                    constaba en el último commit realizado, eliminando los cambios introducidos en él. Obviamente, este
+                    comando funciona si el archivo está en el Área de Trabajo, todavía no ha pasado al Stage para futuro
+                    commit.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git reset SHA-del-commit</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Esta es la herramienta de recuperación más poderosa de Git. No solo rebobina hasta la situación
+                    previa a un commit concreto, sino que además borra la trayectoria posterior, es decir borra los
+                    commits posteriores al que se recupera con este comando. Para invocarlo, bastan los 7 primeros
+                    caracteres del SHA concreto.
+                </p>
+                <p>Este reset devuelve al commit deseado, pero no deshace los cambios que se habieran producido en él
+                    antes de hacer ese commit. Para realizar esta doble labor de retornar a un commit anterior y
+                    revertir las modificaciones en ese commit el commando es:</p>
+                <p><span class="destacado">git reset --hard SHA-del-commit</span>.</p>
+            </div>
+            <div class="imagen"><img src="imagenes/imagen_01.png" alt="git reset"></div>
+            <div class="imagen"><img src="imagenes/imagen_02.png" alt="git reset"></div>
+        </div>
+        <div class="texto-normal">
+            <p>
+                Resumen de los tres comandos anteriores para efectúar cambios:
+            </p>
+            <ul>
+                <li>
+                    <span class="destacado">git checkout HEAD filename</span>: descarta los cambios en el directorio de
+                    trabajo. Se consigue el mismo efecto con esta sintaxis: <span class="destacado">git checkout --
+                        nombrearchivo</span>.
+                </li>
+                <li>
+                    <span class="destacado">git reset HEAD filename</span>: retira los cambios de un archivo del Staging
+                    Area.
+                </li>
+                <li>
+                    <span class="destacado">git reset commit_SHA</span>: puede ser usado para resetear a un commit
+                    anterior en la historia de commits del proyecto.
+                </li>
+            </ul>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git revert HEAD</p>
+            </div>
+            <div class="explica-comando">
+                <p>Esta opción es menos destructiva que el reset para volver a un commit previo, ya que lo que lo que
+                    hace es eliminar las líneas que se hayan añadido y restaurar las que se han quitado.</p>
+                <p>Obviamente, antes de efectuar esta operación conviene revisar las diferencias entre los commits
+                    afectados por la misma, para ello:</p>
+                <p><span class="destacado">git diff HEAD~1 HEAD</span></p>
+                <p>HEAD~n es un atajo para referirse a un commit <em>n</em> veces anterior.</p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>
+                Git permite la creación de ramas para experimentar con versiones de un proyecto. La rama principal se
+                denomina
+                <span class="destacado">master</span>. Se puede crear una rama y hacer cambios que sóla afectan a esa
+                rama. No tendrán efecto en la rama
+                <span class="destacado">master</span> hasta que no se fusionen en ella esos cambios introducidos en la
+                otra rama.
+            </p>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git branch</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    El comando informa de las ramas existentes en el proyecto. En la salida, el asterisco
+                    <span class="destacado">*</span> muestra la rama en la que se está.
+                </p>
+            </div>
+            <div class="imagen"><img src="imagenes/imagen_03.png" alt="git branches"></div>
+            <div class="imagen"><img src="imagenes/imagen_04.png" alt="git branches"></div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git branch nombre-rama</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Así se crea una nueva rama. Los nombres de estas no pueden tener espacios.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git checkout nombre-rama</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Con este comando se pasa de una rama a otra rama concreta. De esta forma, se pueden realizar commits
+                    en la rama sin afectar a otra u otras. Obviamente, todos los comandos que se pueden utilizar en la
+                    rama master están disponibles en otra rama.
+                </p>
+                <p>
+                    Una nueva rama hereda todos los commits realizados hasta ese momento en la rama master.
+                </p>
+                <p>Con <span class="destacado">git checkout -b nueva_rama</span> se hace a la vez dos cosas: crear una
+                    nueva rama y situarse en ella.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git merge nombre-rama</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Así se unifican los cambios de los archivos de una rama a otra. Con este comando se incorporan los
+                    cambios de la rama nombrada con 'nombre-rama' en la rama en la que se esté actualmente. Es decir,
+                    que para fusionar dos ramas en primer lugar hay que situarse en la rama de de destino y después
+                    utilizar el comando para fusionar la rama invocada.
+                </p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>
+                Un suceso habitual en Git son los
+                <span class="destacado">merge conflicts</span>. Se realizan commits en ramas separadas que alteran la
+                misma línea del mismo archivo de una forma contradictoria. Si se fusionan ambas ramas con un merge, Git
+                no sabe qué versión del archivo es la que debe prevalecer. Así surge el conflicto en cuestión. Git no
+                puede fusionar automáticamente ambas ramas. Debe intervenir el programador para resolver el conflicto.
+            </p>
+            <p>
+                El programador elige qué versión quedarse, se pasa el cambio a la Zona de Index, y se hace un commit con
+                un mensaje que informe de que el commit es para resolver el merge conflict.
+            </p>
+            <p>En los casos en los que una fusión supone un buen montón de conflictos y resolverlos no es tarea fácil,
+                se puede retroceder y anular la fusión mediante <span class="destacado">git merge --abort</span>.</p>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git branch -d nombre-rama</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    En Git, las ramas generalmente son medios para un fin. Se crean para trabajar en un nuevo aspecto o
+                    nueva funcionalidad del proyecto, pero su objetivo final es fusionar esa novedad en la rama master.
+                    Después de que la rama ha sido integrada en la master, ha cumplido su propósito y puede ser borrada.
+                    Con el comando se borra la rama concreta del proyecto.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git branch -m nombre-antiguo-rama nombre-nuevo-rama</p>
+            </div>
+            <div class="explica-comando">
+                <p>De este modo se cambia el nombre de una rama.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git config --global alias.nombre-alias 'comando a sustituir'</p>
+            </div>
+            <div class="explica-comando">
+                <p>En git existen los <span class="destacado">alias</span>, que permiten crear comandos que son atajos a
+                    comandos que son más largos. Veamos un ejemplo:</p>
+                <p><span class="destacado">git config --global alias.lodag 'log --oneline --decorate --all
+                        --graph'</span></p>
+                <p>A los alias se les puede añadir parámetros, que se sitúan después del comando al que sustituye el
+                    alias.</p>
+                <p><span class="destacado">git config --global --get-regexp alias</span> nos permite saber los alias que
+                    hemos creado.
+                </p>
+                <p><span class="destacado">git config --global --unset alias.nombre-alias</span> elimina el alias.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git tag nombretag</p>
+            </div>
+            <div class="explica-comando">
+                <p>Las etiquetas sirven para identificar commits concretos. Con esta sintaxis, se añade la etiqueta al
+                    commit más reciente.</p>
+                <p>
+                    <span class="destacado">git tag nombretag HASH del commit</span> añade la etiqueta al commit con ese
+                    hash.
+                </p>
+                <p>
+                    Estas etiquetas sirven para identificar ese commit a todos los efectos, por lo que, por ejemplo, se
+                    puede retroceder a ese commit mediante <span class="destacado">git checkout nombretag</span>
+                </p>
+                <p>
+                    <span class="destacado">git tag</span> lista todos los tags del proyecto.
+                </p>
+                <p>
+                    <span class="destacado">git tag -d nombretag</span> elimina ese tag.
+                </p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>Las <strong>etiquetas anotadas</strong> permiten incluir mucha información a un commit concreto: <span
+                    class="destacado">git tag -a nombretag</span>. Con este tipo de tags se puede revisar posteriormente
+                toda la información volcada en el mismo: <span class="destacado">git show nombretag</span></p>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git stash</p>
+            </div>
+            <div class="explica-comando">
+                <p>Según se está trabajando en un apartado de un proyecto, normalmente el espacio de trabajo suele estar
+                    en un estado inconsistente. Pero puede que se necesite cambiar de rama durante un breve tiempo para
+                    ponerse a trabajar en algún otro tema urgente. Esto plantea el problema de confirmar cambios en un
+                    trabajo medio hecho, simplemente para poder volver a ese punto más tarde.</p>
+                <p>Este comando permite esto.</p>
+                <p>Este comando de guardado rápido (stashing) toma el estado del espacio de trabajo, con todas las
+                    modificaciones en los archivos bajo control de cambios, y lo guarda en una pila provisional. Desde
+                    allí, se podrán recuperar posteriormente y volverlas a aplicar de nuevo sobre el espacio de trabajo.
+                </p>
+                <p>Por ejemplo, si se está trabajando sobre un par de archivos e incluso uno de ellos está ya añadido al
+                    área de preparación para un futuro almacenamiento de sus cambios en el repositorio. Al lanzar el
+                    comando <strong>git
+                        status</strong>, se podría observar un estado inconsistente:</p>
+                <textarea rows="13">
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#      modified:   index.html
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#
+#      modified:   lib/simplegit.rb
+#
+                </textarea>
+                <p>Si justo en este momento se desea cambiar de rama, pero sin confirmar los cambios realizados hasta
+                    entonces; la solución es un guardado rápido provisional de los cambios. Utilizando el comando
+                    <strong>git stash</strong> y enviando un nuevo grupo de cambios a la pila de guardado rápido:</p>
+                <textarea rows="6">
+$ git stash
+Saved working directory and index state \
+  "WIP on master: 049d078 added the index file"
+HEAD is now at 049d078 added the index file
+(To restore them type "git stash apply")
+                </textarea>
+                <p>Con ello, se limpia el área de trabajo:</p>
+                <textarea rows="4">
+$ git status
+# On branch master
+nothing to commit, working directory clean                    
+                </textarea>
+                <p>Y se permite cambiar de rama para ponerse a trabajar en cualquier otra parte. Con la tranquilidad de
+                    que los cambios a medio completar están guardados a buen recaudo en la pila de guardado rápido.</p>
+                <p>Para ver el contenido de dicha pila, se emplea el comando <span class="destacado">git stash
+                        list</span>.</p>
+                <textarea rows="5">
+$ git stash list
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051... Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5... added number to log
+                </textarea>
+                <p>En este ejemplo, se habian realizado dos guardados rápidos anteriores, por lo que se ven tres grupos
+                    de cambios guardados en la pila. Con el comando <span class="destacado">git stash apply</span>, tal
+                    y como se indica en la salida del comando stash original, se pueden volver a aplicar los últimos
+                    cambios recien guardados.</p>
+                <p>Si lo que se desea es reaplicar alguno de los grupos más antiguos de cambios, se ha de indicar
+                    expresamente:
+                    <span class="sombreado">git stash apply stash@{2}</span> Si no se indica ningún grupo concreto, Git
+                    asume que se desea reaplicar el grupo de cambios más reciente de entre los guardados en la pila</p>
+                <textarea rows="9">
+$ git stash apply
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#
+#      modified:   index.html
+#      modified:   lib/simplegit.rb
+#
+                </textarea>
+                <p>
+                    Como se ve en la salida del comando, Git vueve a aplicar los correspondientes cambios en los
+                    archivos que estaban modificados. Pero no conserva la información de lo que estaba o no estaba
+                    añadido al área de preparación. En este ejemplo se han aplicado los cambios de vuelta sobre un
+                    espacio de trabajo limpio, en la misma rama.
+                </p>
+                <p>Es muy conveniente añadir un mensaje al stash para recordar de qué se trata: <span
+                        class="destacado">git stash save "Este stash trata de..."</span>. Posteriormente, cuando se
+                    recupera la información sobre los stash existentes mediante <span class="destacado">git stash
+                        list</span>, este mensaje aparece junto al stash y nos refresca la memoria.</p>
+                <p>Los comandos <span class="destacado">git stash apply</span> tan solo recuperan cambios almacenados en
+                    la pila de guardado rápido, sin afectar al estado de la pila. Es decir, los cambios siguen estando
+                    guardados en la pila.</p>
+                <p>Para quitarlos de ahí, es necesario lanzar expresamente el comando <span class="sombreado">git stash
+                        drop</span> e indicar el número de guardado a borrar de la pila:</p>
+                <textarea rows="7">
+$ git stash list
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051... Revert "added file_size"
+stash@{2}: WIP on master: 21d80a5... added number to log
+$ git stash drop stash@{0}
+Dropped stash@{0} (364e91f3f268f0900bc3ee613f9f733e82aaed43)
+                </textarea>
+                <p>También es posible utilizar el comando <span class="sombreado">git stash pop</span>, que aplica
+                    cambios de un guardado y lo retira inmediatamente de la pila.</p>
+                <p><a href="https://git-scm.com/book/es/v1/Las-herramientas-de-Git-Guardado-r%C3%A1pido-provisional">Información
+                        completa sobre stash en la documentación oficial</a>.</p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>
+                Git ofrece una colección de herramientas colaborativas para que trabajar con otros en un proyecto sea
+                más fácil. ¿Qué es lo que necesita un equipo de trabajo?:
+            </p>
+            <ul>
+                <li>
+                    Una réplica completa del proyecto en cada uno de los ordenadores de los integrantes del equipo de
+                    trabajo.
+                </li>
+                <li>
+                    Una forma de hacer un seguimiento y revisar el trabajo de los otros.
+                </li>
+                <li>
+                    Acceso a una versión definitiva del proyecto.
+                </li>
+            </ul>
+            <p>
+                Todo esto se pude lograr utilizando
+                <span class="destacado">remotes</span>. Un remote es un repositorio Git compartido que permite trabajar
+                a múltiples colaboradores en el mismo proyecto Git desde diferentes lugares. Los colaboradores trabajan
+                en el proyecto independientemente, y fusionan los cambios juntos cuando están listos para hacerlo.
+            </p>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git clone remote_location clone_name</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    De este modo, el integrante del equipo de trabajo obtiene su propia réplica del directorio común,
+                    mediante
+                    <span class="" destacado>clonación</span>.
+                </p>
+                <p>
+                    En este comando,
+                    <span class="destacado">remote_location</span> señala a Git donde ir a buscar el remote. Esto puede
+                    ser una dirección web, o una ruta completa en una red compartida, como por ejemplo:
+                </p>
+                <p>
+                    <span class="sombreado">/Users/teachers/Documents/some-remote</span>
+                </p>
+                <p>
+                    <span class="destacado">clone_name</span> es el nombre que el colaborador en el proyecto da al
+                    directorio en el que Git clonará el repositorio.
+                </p>
+                <p>
+                    Los cambios realizados en el directorio clonado no serán conocidos ni afectarán al directorio desde
+                    el que se clonó el repositorio individual.
+                </p>
+                <p>
+                    Cuando Git clona un directorio le otorga a la dirección remota de partida de la clonación el nombre
+                    de
+                    <span class="destacado">origin</span>.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git remote -v</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    De este modo se ve un listado de los remotes de un proyecto.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git fetch</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    ¿Qué ocurre cuando se realizan cambios en el proyecto compartido? El clon de un colaborador ya no
+                    está actualizado. Para comprobar los cambios que se han realizado en el remote y traer los cambios a
+                    la copia individual se utiliza este comando.
+                </p>
+                <p>
+                    Este comando no fusiona los cambios del remote en el repositorio individual. Lleva esos cambios a lo
+                    que se denomina
+                    <span class="destacado">remote branch</span>.
+                </p>
+                <p>
+                    Aunque los cambios realizados en el remote se han traído al repositorio individual mediante 'fetch',
+                    esos cambios están en la rama
+                    <span class="destacado">origin/master</span>. La rama local master no ha sido actualizada todavía,
+                    así que no se pueden ver o hacer cambios en el trabajo añadido o modificado en el remote.
+                </p>
+                <p>
+                    Utilizando el comando
+                    <span class="destacado">git merge</span> se integra el
+                    <span class="destacado">origin/master</span> en la
+                    <span class="destacado">rama master individual</span>. De esta forma, se fusiona la rama master
+                    local con los cambios producidos en el remote. Para ello se utiliza lo siguiente:
+                </p>
+                <p>
+                    <span class="sombreado">git merge origin/master</span>
+                </p>
+                <p>
+                    Para hacer esto, hay que asegurarse de estar situado en la rama master individual con el 'cd
+                    directorio_local' correspondiente.
+                </p>
+                <p>
+                    Otro punto importante de esta fusión del master del remote con el local es que el HEAD commit cambia
+                    y pasa a ser el proviniente del remote.
+                </p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>
+                El flujo de trabajo en los proyectos colaborativos normalmente sigue este orden:
+            </p>
+            <ol>
+                <li>
+                    Hacer fetch y merge desde el remote.
+                </li>
+                <li>
+                    Crear una rama para trabajar en un aspecto nuevo del proyecto.
+                </li>
+                <li>
+                    Desarrollar este trabajo en la rama local individual y hacer los commits pertinentes en ella.
+                </li>
+                <li>
+                    Fetch y merge desde el remote otra vez (en caso de que haya habido cambios en el remote mientras que
+                    se desarrollaba el trabajo individual).
+                </li>
+                <li>
+                    Hacer
+                    <span class="destacado">push</span> de la rama local al remote para revisión.
+                </li>
+            </ol>
+            <p>
+                Los pasos 1 y 4 son medidas de seguridad contra los 'merge conflicts', que ocurren cuando dos ramas
+                contienen los mismos cambios en un archivo que no pueden ser fusionados con el comando
+                <span class="destacado">git merge</span>. El paso 5, el que implica el uso del comando
+                <span class="destacado">git push</span>, se explica a continuación.
+            </p>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git push origin nombrerama</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Este comando lleva la rama individual local concreta al remote, es decir, al
+                    <span class="destacado">origin</span>. Desde este momento, el supervisor del proyecto puede revisar
+                    esta rama y fusionarla con el trabajo desarrollado en la
+                    <span class="destacado">rama master del remote</span>, convirtiéndola en parte definitiva del
+                    proyecto.
+                </p>
+                <p>
+                    ¿Cómo funciona esto? El comando push copia la rama local en el remote, en un directorio con el mismo
+                    nombre de la rama local. Así, el supervisor puede revisar el trabajo y fusionarlo cuando sea
+                    pertinente en el master del proyecto.
+                </p>
+            </div>
+        </div>
+        <div class="texto-normal">
+            <p>Unas cuestiones finales:</p>
+            <ul>
+                <li>
+                    Los remotes pueden estar en una dirección web, en una red compartida, o , incluso, en una carpeta
+                    separada dentro de tu propio ordenador.
+                </li>
+                <li>
+                    Los proyectos Git se pueden manejar en Github, una web que aloja proyectos Git de miles de usuarios.
+                    Con Github puedes acceder a tus proyectos desde cualquier sitio utilizando el flujo de trabajo
+                    básico de Git.
+                </li>
+            </ul>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git remote add origin <br>https://github.com<br>/nombreusuario<br>/nombrerepositorio</p>
+            </div>
+            <div class="explica-comando">
+                <p>De este modo se añade el repositorio local a un repositorio remoto en Github. <span
+                        class="destacado">origin</span> es el nombre usado convencionalmente para denominar el
+                    repositorio remoto.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git push -u origin master</p>
+            </div>
+            <div class="explica-comando">
+                <p>Se <em>empujan</em> los cambios locales de un commit al repositorio remoto <em>origin</em>. <span
+                        class="destacado">master</span> es la rama principal del repositorio local. <span
+                        class="destacado">-u</span> señala a Git que recuerde los parámetros, para que la próxima vez
+                    poniendo simplemente <span class="destacado">git push</span> se haga el trabajo.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git pull origin master</p>
+            </div>
+            <div class="explica-comando">
+                De este modo se traen a la rama principal del repositorio local los cambios que se hayan producido en el
+                repositorio remoto.
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git remote set-url origin url-del-nuevo-repositorio</p>
+            </div>
+            <div class="explica-comando">
+               Así se cambia el <span class="destacado">remote</span> actual por un nuevo repositorio.
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git rebase</p>
+            </div>
+            <div class="explica-comando">
+                <p>Es un modo de reorganizar los cambios y commits de varias ramas. Con este comando se pueden coger los
+                    cambios confirmados en una rama y reaplicarlos sobre otra. Muy importante: no se pueden hacer este
+                    tipo de reorganizaciones en commits que ya se han hayan enviado, mediante push, a un repositorio
+                    público.</p>
+                <p><a href="https://git-scm.com/book/es/v1/Ramificaciones-en-Git-Reorganizando-el-trabajo-realizado">Reorganizando
+                        el trabajo realizado</a>.</p>
+                <p>Rebase tiene una opción de manipular los commits llamada <strong>rebase interactivo</strong>, <span
+                        class="destacado">git rebase -i</span>. Se pueden cambiar los mensajes de los commits, su orden,
+                    combinar varias en uno solo, etc.</p>
+                <p><a href="https://git-scm.com/book/es/v1/Las-herramientas-de-Git-Reescribiendo-la-historia">Entrada en
+                        el Manual oficial</a>.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git diff HEAD</p>
+            </div>
+            <div class="explica-comando">
+                <p>
+                    Así se averigua lo que hay de diferente desde nuestro ultimo commit, que se suele denominar con el
+                    término
+                    <span class="destacado">HEAD</span>.
+                </p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="comando">
+                <p>git rm nombre_archivo</p>
+            </div>
+            <div class="explica-comando">
+                <p>Se borran físicamente los archivos del proyecto y se añaden los cambios al Staging Area. También se
+                    pueden usar comodines <span class="destacado">'*.txt'</span> para borrar varios archivos con la
+                    misma extensión. Posteriormente, hay que hacer un commit para registrar estos cambios.</p>
+                <p>Con <span class="destacado">git rm -r nombre_carpeta</span> se borra recursivamente la carpeta y todo
+                    lo que contenga en su interior.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui;
+}
+
+a {
+  text-decoration: none;
+  color: #ff0000;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+textarea {
+  width: 100%;
+  padding-top: 16px;
+  padding-left: 16px;
+  font-family: monospace;
+  resize: none;
+  border-radius: 6px;
+}
+.contenedor {
+  max-width: 1024px;
+  width: 95%;
+  margin: auto;
+}
+
+.destacado {
+  font-weight: bold;
+  color: #3b424c;
+  background: #d0d1d2;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.sombreado {
+  background: #3b424c;
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.contenedor .item {
+  margin: 30px 0px;
+  border-top: solid 2px #d8d8d8;
+  text-align: center;
+}
+
+.contenedor .item .comando {
+  font-family: monospace;
+  font-size: 2em;
+  background: #000;
+  border-radius: 10px;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 30px 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .contenedor .item .comando {
+    font-size: 1.5em;
+  }
+}
+
+.contenedor .item .explica-comando {
+  line-height: 1.5em;
+  margin: 30px 20px;
+  text-align: left;
+}
+
+.contenedor .item .explica-comando p:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.contenedor .item .explica-comando ul,
+.contenedor .texto-normal ul {
+  margin: 20px 0px;
+}
+
+.contenedor .texto-normal {
+  margin: 30px 00px;
+  border-top: solid 2px #d8d8d8;
+}
+
+.contenedor .texto-normal p {
+  margin: 20px 20px;
+  line-height: 1.5em;
+}
+
+.contenedor .texto-normal ul,
+.contenedor .texto-normal ol {
+  margin-left: 20px;
+}
+
+ul {
+  padding-left: 24px;
+  line-height: 2em;
+  list-style-type: circle;
+}
+
+ol {
+  padding-left: 24px;
+  line-height: 2em;
+}
+
+.imagen {
+  max-width: 100%;
+  margin-bottom: 40px;
+}
+
+img {
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 5px 5px 5px #626262;
+}
