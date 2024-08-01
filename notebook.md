@@ -199,6 +199,23 @@ git restore --source branch_name -- path/to/file
 ```
 Using these newer commands can make the intent of your Git operations clearer.
 
+## Caso de uso de `git restore`
+
+```bash
+git restore -- . 
+```
+El comando `git restore -- .` en Git se utiliza para deshacer cambios en el directorio de trabajo. Aquí está el desglose de lo que hace cada parte del comando:
+
+1. `git restore`: Este comando se usa para restaurar archivos en el árbol de trabajo (working directory) desde el índice (staging area) o desde el último commit. Es una forma de descartar cambios no deseados.
+
+2. `--`: Este indicador se utiliza para separar las opciones del comando de los nombres de archivos o rutas. En este caso, no se están pasando opciones adicionales, por lo que -- simplemente indica que lo que sigue son los nombres de los archivos o directorios a restaurar.
+
+3. `.`: El punto representa el directorio actual. En este contexto, significa que se restaurarán todos los archivos en el directorio actual y sus subdirectorios.
+
+En resumen, `git restore -- .` deshace todos los cambios en el directorio de trabajo actual, restaurando todos los archivos al estado en que estaban en el último commit, o al estado en el que se encuentran en el índice (**Staging Area**), si es que han sido agregados allí.
+
+Este comando es útil cuando has realizado cambios en tu directorio de trabajo que no deseas conservar y quieres revertir los archivos a su estado original según lo que está registrado en el repositorio.
+
 ## git alias
 
 ```bash
